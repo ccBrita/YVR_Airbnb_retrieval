@@ -16,6 +16,7 @@ def create_listing(name, id1, host_id, host_name, neighbourhood, room_type, pric
         i += 1
     
 def create_reviews(id1, listing_id, id2, date, reviewer_id, reviewer_name, comments, reviews):
+    i = 0
     while (i < len(id1)):
         a = []
         j = 0
@@ -75,8 +76,8 @@ def main():
     comments = []
     reviews = []
     read_csv(name, id1, host_id, host_name, neighbourhood, room_type, price, minimum_nights, availability_365, listing_id, id2, date, reviewer_id, reviewer_name, comments)
-    create_reviews(listing_id, id2, date, reviewer_id, reviewer_name, comments)
-    create_listing(name, id1, host_id, host_name, neighbourhood, room_type, price, minimum_nights, availability_365)
+    create_reviews(id1, listing_id, id2, date, reviewer_id, reviewer_name, comments,reviews)
+    create_listing(name, id1, host_id, host_name, neighbourhood, room_type, price, minimum_nights, availability_365,reviews)
 
 if __name__ == "__main__":
     main()
