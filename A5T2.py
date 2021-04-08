@@ -20,7 +20,7 @@ def create_reviews(id1, listing_id, id2, date, reviewer_id, reviewer_name, comme
         a = []
         j = 0
         while (j < len(id2)):
-            if (id1[i] == listing_id[j])：
+            if id1[i] == listing_id[j]:
                 a.append({"id":id2[i], "date":date[i], "reviewer_id":reviewer_id[i], "reviewer_name":reviewer_name[i], "comments":comments[i]})
             j += 1
         reviews.append(a)
