@@ -13,7 +13,7 @@ STUDENT3
 NAME: HanZhe Ye
 CCID:hanzhe
 *******************************
-Xuanhao Wang HanZhe Ye and Yuchen Li have collaborated in this assignment.
+Xuanhao Wang, HanZhe Ye and Yuchen Li have collaborated in this assignment.
 
 Including files:
 1. Readme.txt
