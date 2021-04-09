@@ -12,7 +12,7 @@ def create_listing(name, id1, host_id, host_name, neighbourhood, room_type, pric
     i = 0
     while (i < len(id1)):
         listing = {"id":int(id1[i]), "name":name[i], "host_id":int(host_id[i]), "host_name":host_name[i], "neighbourhood":neighbourhood[i], "room_type":room_type[i], "price":int(price[i]), "minmum_nights":int(minimum_nights[i]),"availability_365": int(availability_365[i]),"reviews":reviews[i]}
-        col.insert_many(listing)
+        col.insert_one(listing)
         i += 1
     
 def create_reviews(id1, listing_id, id2, date, reviewer_id, reviewer_name, comments, reviews):
