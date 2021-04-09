@@ -16,30 +16,11 @@ def connect(path):
 def query():
     global connection
     global cursor
-    cursor.execute('''SELECT count(*)
-                    FROM summary 
-                    ''')
-    rows = cursor.fetchall()
-    print("table summary has "+str(rows[0][0])+" lines")
 
-    cursor.execute('''SELECT count(*)
-                    FROM review 
-                    ''')
-    rows = cursor.fetchall()
-    print("table review has "+str(rows[0][0])+" lines")
-
-    cursor.execute('''SELECT *
-                    FROM summary 
-                    ORDER BY id
-                    LIMIT 10
-                    ''')
-    rows = cursor.fetchall()
-    for row in rows:
-        print(row)
-
-    cursor.execute('''SELECT *
-                    FROM review 
-                    ORDER BY listing_id
+    cursor.execute('''SELECT host_id, count(list_id)
+                    FROM reviews 
+                    GROUP BY host_id
+                    ORDER BY count(host_id)
                     LIMIT 10
                     ''')
     rows = cursor.fetchall()

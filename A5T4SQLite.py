@@ -17,7 +17,7 @@ def query():
     global connection
     global cursor
     cursor.execute('''SELECT *
-                    FROM summary S
+                    FROM liatings S
                     LEFT JOIN review R ON S.id = R.listing_id
                     WHERE R.listing_id IS NULL
                     ORDER BY R.listing_id
