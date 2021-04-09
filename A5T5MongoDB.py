@@ -5,12 +5,13 @@ def main():
     mydb = myclient["A5db"]
     mycol = mydb["listings"]
     n = input("Please Enter a neighbourhood you are looking for:")
-    result = mycol.aggregate([
+    cursor = mycol.aggregate([
         {"$match":{"neighbourhood":n}},
         {"$group":{"_id":"$neighbourhood","avg":{"$avg":"$price"}}}
     ]
     )
-    print(result[0]["avg"])
+    result = cursor.find_one({},{"avg":1})
+    print(result["avg"])
 
 
 main()
