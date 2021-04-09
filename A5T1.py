@@ -33,13 +33,13 @@ def define_tables():
     global connection, cursor
 
     cursor.execute('''
-                                Drop TABLE IF EXISTS summary;
+                                Drop TABLE IF EXISTS listings;
                                 ''')
     cursor.execute('''
-                                Drop TABLE IF EXISTS review;
+                                Drop TABLE IF EXISTS reviews;
                                 ''')
-    summary = '''
-                    CREATE TABLE summary (
+    listings = '''
+                    CREATE TABLE listings (
                                         id                INT      PRIMARY KEY  NOT NULL,                                      
                                         name              CHAR(300)             NOT NULL,                                   
                                         host_id           INT                   NOT NULL,
@@ -52,8 +52,8 @@ def define_tables():
                                         );
                 '''
 
-    review = '''
-                CREATE TABLE review (
+    reviews = '''
+                CREATE TABLE reviews (
                                     listing_id           INT                   NOT NULL ,                                      
                                     id                   INT      PRIMARY KEY  NOT NULL,                                   
                                     date                 CHAR(15)              NOT NULL,
@@ -63,8 +63,8 @@ def define_tables():
                                     );
             '''
 
-    cursor.execute(review)
-    cursor.execute(summary)
+    cursor.execute(reviews)
+    cursor.execute(listings)
     connection.commit()
 
 
@@ -72,7 +72,7 @@ def insert_data_summary(name, id1,host_id, host_name, neighbourhood, room_type, 
     global connection, cursor
 
     cursor.execute(
-        '''INSERT INTO summary VALUES 
+        '''INSERT INTO listings VALUES 
         (:id, :name, :host_id, :host_name, :neighbourhood, :room_type, :price, :minimum_nights, :availability_365)''',
                    {"id": id1, "name": name, "host_id": host_id, "host_name": host_name, "neighbourhood": neighbourhood,
                     "room_type": room_type, "price": price, "minimum_nights": minimum_nights,
@@ -83,7 +83,7 @@ def insert_data_summary(name, id1,host_id, host_name, neighbourhood, room_type, 
 def insert_data_review(listing_id, id2, date, reviewer_id, reviewer_name, comments):
     global connection, cursor
     cursor.execute(
-        '''INSERT INTO review VALUES 
+        '''INSERT INTO reviews VALUES 
         (:listing_id, :id, :date, :reviewer_id, :reviewer_name, :comments)''',
         {"listing_id": listing_id, "id": id2, "date": date, "reviewer_id": reviewer_id,
          "reviewer_name": reviewer_name, "comments": comments})
@@ -106,7 +106,6 @@ def read_csv(name, id1, host_id, host_name, neighbourhood, room_type, price, min
         minimum_nights.append(i[7])
         availability_365.append(i[8])
 
-    a = reader1.line_num-1
 
     file1.close()
     file2 = open("YVR_Airbnb_reviews.csv", "r", errors='ignore')
@@ -120,7 +119,7 @@ def read_csv(name, id1, host_id, host_name, neighbourhood, room_type, price, min
         reviewer_id.append(i[3])
         reviewer_name.append(i[4])
         comments.append(i[5])
-    b = reader2.line_num-1
+
     file2.close()
 
 def main():
