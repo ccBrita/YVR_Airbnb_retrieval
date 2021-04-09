@@ -6,8 +6,8 @@ def main():
     mycol = mydb["listings"]
     n = input("Please Enter a neighbourhood you are looking for:")
     result = mycol.aggregate(
-        {"$match":{"neighbourhood":n}},
-        {"$group":{"_id":"$neighbourhood","avg":{"$avg":"$price"}}}
+        {$match:{"neighbourhood":n}},
+        {$group:{_id:"$neighbourhood","avg":{$avg:"$price"}}}
     )
     print(result["avg"])
 
