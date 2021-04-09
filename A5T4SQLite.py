@@ -16,7 +16,7 @@ def connect(path):
 def query():
     global connection
     global cursor
-    cursor.execute('''SELECT *
+    cursor.execute('''SELECT S.id
                     FROM listings S
                     LEFT JOIN reviews R ON S.id = R.listing_id
                     WHERE R.listing_id IS NULL
