@@ -15,26 +15,16 @@ def connect(path):
     connection.commit()
 
 def find_nei():
-    global connection
-    global cursor
-    neighbourhood = []
-    cursor.execute('''SELECT DISTINCT neighbourhood 
-                    FROM listings S
-                    ''')
-    rows = cursor.fetchall()
-    for row in rows:
-        neighbourhood.append(row[0])
-    a = len(neighbourhood)
-    return neighbourhood[random.randint(0,a)]
+    neighbourhood = input("Please Enter a neighbourhood you are looking for:")
+    return neighbourhood
 
 def query(neighbourhood):
     global connection
     global cursor
     cursor.execute('''SELECT AVG(price)
-                    FROM listings S, review R
-                    WHERE S.id = R.listing_id
-                    AND S.neighbourhood = :n
-                    GROUP BY s.neighbourhood''',{'n':neighbourhood})
+                    FROM listings
+                    WHERE neighbourhood = :n
+                    GROUP BY neighbourhood''',{'n':neighbourhood})
     rows = cursor.fetchall()
     for row in rows:
         print(row[0])
