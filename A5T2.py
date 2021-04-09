@@ -11,7 +11,7 @@ def create_listing(name, id1, host_id, host_name, neighbourhood, room_type, pric
     col = mydb["listings"]
     i = 0
     while (i < len(id1)):
-        listing = {"id":id1[i], "name":name[i], "host_id":host_id[i], "host_name":host_name[i], "neighbourhood":neighbourhood[i], "room_type":room_type[i], "price":price[i], "minmum_nights":minimum_nights[i],"availability_365": availability_365[i],"reviews":reviews[i]}
+        listing = {"id":int(id1[i]), "name":name[i], "host_id":int(host_id[i]), "host_name":host_name[i], "neighbourhood":neighbourhood[i], "room_type":room_type[i], "price":int(price[i]), "minmum_nights":int(minimum_nights[i]),"availability_365": int(availability_365[i]),"reviews":reviews[i]}
         col.insert_many(listing)
         i += 1
     
@@ -22,7 +22,7 @@ def create_reviews(id1, listing_id, id2, date, reviewer_id, reviewer_name, comme
         j = 0
         while (j < len(id2)):
             if id1[i] == listing_id[j]:
-                a.append({"id":id2[i], "date":date[i], "reviewer_id":reviewer_id[i], "reviewer_name":reviewer_name[i], "comments":comments[i]})
+                a.append({"id":int(id2[i]), "date":date[i], "reviewer_id":int(reviewer_id[i]), "reviewer_name":reviewer_name[i], "comments":comments[i]})
             j += 1
         reviews.append(a)
         i += 1
