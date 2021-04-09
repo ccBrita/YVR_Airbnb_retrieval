@@ -5,7 +5,7 @@ def main():
     mydb = myclient["A5db"]
     mycol = mydb["listings"]
     neighbourhood = input("Please Enter a neighbourhood you are looking for:")
-    agrt = mycol.aggregate([{$group : {_id : "$neighbourhood", avg_price : {$avg : 1}}}])
+    agrt = mycol.aggregate([{"$group" : {"_id" : "$neighbourhood", "avg_price" : {"$avg" : "price"}}}])
     result = agrt.find({"_id":neighbourhood})
     print(result["avg_price"])
 
