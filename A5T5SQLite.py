@@ -19,7 +19,7 @@ def find_nei():
     global cursor
     neighbourhood = []
     cursor.execute('''SELECT DISTINCT neighbourhood 
-                    FROM summary S
+                    FROM listings S
                     ''')
     rows = cursor.fetchall()
     for row in rows:
@@ -31,7 +31,7 @@ def query(neighbourhood):
     global connection
     global cursor
     cursor.execute('''SELECT AVG(price)
-                    FROM summary S, review R
+                    FROM listings S, review R
                     WHERE S.id = R.listing_id
                     AND S.neighbourhood = :n
                     GROUP BY s.neighbourhood''',{'n':neighbourhood})

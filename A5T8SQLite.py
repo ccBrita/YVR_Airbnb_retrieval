@@ -20,7 +20,7 @@ def find_listing_id():
     a = random.randint(0,140000)
     cursor.execute('''
                     SElECT listing_id
-                    From   review
+                    From   reviews
                     Limit :number,1
                         ''',{'number':a})
     select_id = cursor.fetchall()
@@ -32,7 +32,7 @@ def query(select_id):
     global cursor
     cursor.execute('''
                     SELECT host_name, price, comments
-                    FROM review R,summary S
+                    FROM review R,listings S
                     WHERE R.listing_id = :ID
                     AND R.listing_id = S.id
                     ORDER BY date DESC
