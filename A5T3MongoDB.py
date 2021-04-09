@@ -5,7 +5,8 @@ def main():
     mydb = myclient["A5db"]
     mycol = mydb["listings"]
     hosts = mycol.distinct("host_id")
-    hosts.sort().limit(10)
+    hosts.sort()
+    hosts = hosts[:10]
     
     for host in hosts:
         number = mycol.find({"host_id":host}).count()
