@@ -18,9 +18,10 @@ def query():
     global cursor
 
     cursor.execute('''SELECT host_id, count(host_id)
-                        FROM listings
-                        ORDER BY host_id
-                        LIMIT 10
+                    FROM listings
+                    GROUP BY host_id
+                    ORDER BY host_id
+                    LIMIT 10
                     ''')
     rows = cursor.fetchall()
     for row in rows:
