@@ -4,7 +4,8 @@ def main():
     myclient = pymongo.MongoClient("mongodb://localhost:27017")
     mydb = myclient["A5db"]
     mycol = mydb["listings"]
-    hosts = mycol.distinct("host_id").sort().limit(10)
+    hosts = mycol.distinct("host_id")
+    hosts.sort().limit(10)
     
     for host in hosts:
         number = mycol.find({"host_id":host}).count()
