@@ -4,10 +4,12 @@ def main():
     myclient = pymongo.MongoClient("mongodb://localhost:27017")
     mydb = myclient["A5db"]
     mycol = mydb["listings"]
-    neighbourhood = input("Please Enter a neighbourhood you are looking for:")
-    agrt = mycol.aggregate([{"$group" : {"_id" : "$neighbourhood", "avg_price" : {"$avg" : "price"}}}])
-    result = agrt.find({"_id":neighbourhood})
-    print(result["avg_price"])
+    n = input("Please Enter a neighbourhood you are looking for:")
+    result = mycol.aggregate(
+        {"$match":{"neighbourhood":n}},
+        {"$group":{"_id":"$neighbourhood","avg":{"$avg":"$price"}}}
+    )
+    print(result["avg"])
 
 
 main()
