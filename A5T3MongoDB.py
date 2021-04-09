@@ -13,4 +13,3 @@ def main():
         print(host, number)
 
 main()
-

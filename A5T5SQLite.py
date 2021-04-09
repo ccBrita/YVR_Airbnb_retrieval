@@ -15,8 +15,18 @@ def connect(path):
     connection.commit()
 
 def find_nei():
+    global connection
+    global cursor
     neighbourhood = input("Please Enter a neighbourhood you are looking for:")
-    return neighbourhood
+    cursor.execute('''
+                SELECT neighbourhood
+                FROM listing
+                ''')
+    rows = cursor.fetchall()
+    for row in rows:
+        if row[0] == neighbourhood:
+            return neighbourhood
+    return NULL
 
 def query(neighbourhood):
     global connection
@@ -34,7 +44,10 @@ def main():
     path = "./A5.db"
     connect(path)
     neighbourhood = find_nei()
-    query(neighbourhood)
+    if neighbourhood:
+        query(neighbourhood)
+    else:
+        print("No such Neighbourhood.")
     connection.commit()
     connection.close()
 
