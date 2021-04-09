@@ -17,10 +17,10 @@ def query():
     global connection
     global cursor
     cursor.execute('''SELECT *
-                    FROM liatings S
-                    LEFT JOIN review R ON S.id = R.listing_id
+                    FROM listings S
+                    LEFT JOIN reviews R ON S.id = R.listing_id
                     WHERE R.listing_id IS NULL
-                    ORDER BY R.listing_id
+                    ORDER BY S.id
                     LIMIT 10''')
     rows = cursor.fetchall()
     for row in rows:

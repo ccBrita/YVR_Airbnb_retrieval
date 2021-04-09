@@ -17,11 +17,10 @@ def query():
     global connection
     global cursor
 
-    cursor.execute('''SELECT host_id, count(list_id)
-                    FROM reviews 
-                    GROUP BY host_id
-                    ORDER BY count(host_id)
-                    LIMIT 10
+    cursor.execute('''SELECT host_id, count(host_id)
+                        FROM listings
+                        ORDER BY host_id
+                        LIMIT 10
                     ''')
     rows = cursor.fetchall()
     for row in rows:
