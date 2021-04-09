@@ -20,13 +20,13 @@ def find_nei():
     neighbourhood = input("Please Enter a neighbourhood you are looking for:")
     cursor.execute('''
                 SELECT neighbourhood
-                FROM listing
+                FROM listings
                 ''')
     rows = cursor.fetchall()
     for row in rows:
         if row[0] == neighbourhood:
             return neighbourhood
-    return NULL
+    return 0
 
 def query(neighbourhood):
     global connection
@@ -44,7 +44,7 @@ def main():
     path = "./A5.db"
     connect(path)
     neighbourhood = find_nei()
-    if neighbourhood:
+    if neighbourhood!=0:
         query(neighbourhood)
     else:
         print("No such Neighbourhood.")
