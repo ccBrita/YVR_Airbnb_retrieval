@@ -17,19 +17,25 @@ def connect(path):
 def find_listing_id():
     global connection
     global cursor
-    a = random.randint(0,140000)
+    number = input("Please Enter a listing_id you are looking for:")
+    if not number.isdigit():
+        return -1
+    number = int(number)
     cursor.execute('''
                     SElECT listing_id
                     From   reviews
-                    Limit :number,1
-                        ''',{'number':a})
-    select_id = cursor.fetchall()
-    return select_id[0][0]
+                        ''')
+    rows = cursor.fetchall()
+    for row in rows:
+        if row[0] == number:
+            return number
+    return -1
 
 
 def query(select_id):
     global connection
     global cursor
+    
     cursor.execute('''
                     SELECT host_name, price, comments
                     FROM reviews R,listings S
@@ -47,7 +53,10 @@ def main():
     path = "./A5.db"
     connect(path)
     select_id = find_listing_id()
-    query(select_id)
+    if select_id != -1:
+        query(select_id)
+    else:
+        print("No such id")
     connection.commit()
     connection.close()
 
