@@ -28,7 +28,7 @@ def create_reviews(id1, listing_id, id2, date, reviewer_id, reviewer_name, comme
         i += 1
 
 def read_csv(name, id1, host_id, host_name, neighbourhood, room_type, price, minimum_nights, availability_365, listing_id, id2, date, reviewer_id, reviewer_name, comments):
-    file1 = open("YVR_Airbnb_listings_summary.csv","r")
+    file1 = open("YVR_Airbnb_listings_summary.csv","r", encoding="UTF-8")
     reader1 = csv.reader(file1)
     for i in reader1:
         if reader1.line_num == 1:
@@ -43,7 +43,7 @@ def read_csv(name, id1, host_id, host_name, neighbourhood, room_type, price, min
         minimum_nights.append(i[7])
         availability_365.append(i[8])
     file1.close()
-    file2 = open("YVR_Airbnb_reviews.csv","r")
+    file2 = open("YVR_Airbnb_reviews.csv","r", encoding="UTF-8")
     reader2 = csv.reader(file2)
     for i in reader2:
         if reader2.line_num == 1:

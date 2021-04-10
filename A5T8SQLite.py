@@ -32,7 +32,7 @@ def query(select_id):
     global cursor
     cursor.execute('''
                     SELECT host_name, price, comments
-                    FROM review R,listings S
+                    FROM reviews R,listings S
                     WHERE R.listing_id = :ID
                     AND R.listing_id = S.id
                     ORDER BY date DESC
