@@ -22,7 +22,7 @@ def create_reviews(id1, listing_id, id2, date, reviewer_id, reviewer_name, comme
         j = 0
         while (j < len(id2)):
             if id1[i] == listing_id[j]:
-                a.append({"id":int(id2[j]), "date":date[j], "reviewer_id":int(reviewer_id[j]), "reviewer_name":reviewer_name[j], "comments":comments[j]})
+                a.append({"listing_id":listing_id[j],"id":int(id2[j]), "date":date[j], "reviewer_id":int(reviewer_id[j]), "reviewer_name":reviewer_name[j], "comments":comments[j]})
             j += 1
         reviews.append(a)
         i += 1
