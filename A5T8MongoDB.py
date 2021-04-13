@@ -3,10 +3,10 @@ import pymongo as pm
 def query(table, sel_id):
     results = table.find({"id":int(sel_id)})
     for res in results:
-        print("host_name:", res["host_name"])
-        print("rental_price:", res["price"])
+        print("Host_name:", res["host_name"])
+        print("Price:", res["price"])
         latest = res["reviews"].pop()
-        print("latest review: \n", latest)
+        print("Latest Review:", latest["comments"])
 
 def main():
     conn = pm.MongoClient("mongodb://localhost:27017")

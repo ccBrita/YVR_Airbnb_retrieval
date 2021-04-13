@@ -46,7 +46,7 @@ def query(select_id):
                     ''',{'ID':select_id})
     rows = cursor.fetchall()
     for row in rows:
-        print(row)
+        print("Host name:",row[0],"\nPrice:",row[1],"\nLatest review:", row[2])
 
 
 def main():
