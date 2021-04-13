@@ -15,6 +15,8 @@ CCID:hanzhe
 *******************************
 Xuanhao Wang, HanZhe Ye and Yuchen Li have collaborated in this assignment.
 
+MongoDB port using in following files: 27017
+
 Including files:
 1. Readme.txt
 2. A5T1.py
