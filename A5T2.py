@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 import csv
 
-client = MongoClient("mongodb://localhost:27013")
+client = MongoClient("mongodb://localhost:27017")
 #connect to mongo serve
 mydb = client["A5db"]
 
