@@ -37,7 +37,7 @@ def query(neighbourhood):
                     GROUP BY neighbourhood''',{'n':neighbourhood})
     rows = cursor.fetchall()
     for row in rows:
-        print(row[0])
+        print("Average price of this neighbourhood is", row[0])
 
 
 def main():

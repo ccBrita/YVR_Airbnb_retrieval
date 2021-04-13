@@ -19,7 +19,7 @@ def main():
     ]
     )
     result = list(cursor)
-    print(result[0]["avg"])
+    print("Average price of this neighbourhood is",result[0]["avg"])
 
 
 main()
