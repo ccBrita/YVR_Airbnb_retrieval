@@ -6,7 +6,7 @@ def main():
     mycol = mydb["listings"]
     hosts = mycol.find({"reviews":[]}).sort("id").limit(10)
     for host in hosts:
-        print(host["id"])
+        print("listing_id:", host["id"])
 
 main()
 

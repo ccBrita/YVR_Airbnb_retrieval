@@ -24,7 +24,7 @@ def query():
                     LIMIT 10''')
     rows = cursor.fetchall()
     for row in rows:
-        print(row[:9])
+        print("listing id:",row[0])
 
 
 def main():

@@ -25,7 +25,7 @@ def query():
                     ''')
     rows = cursor.fetchall()
     for row in rows:
-        print("listing number:",row[0],"count:",row[1])
+        print("listing id:",row[0],"count:",row[1])
 
 
 def main():
