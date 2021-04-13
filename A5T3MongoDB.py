@@ -10,7 +10,7 @@ def main():
     
     for host in hosts:
         number = mycol.find({"host_id":host}).count()
-        print(host, number)
+        print("listing number:",host, "count:",number)
 
 main()
 
