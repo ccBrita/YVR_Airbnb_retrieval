@@ -12,7 +12,7 @@ def main():
         number = mycol.find({"host_id":host}).count()
         print("listing id:",host, "count:",number)
     t2 = time.time()
-    print("Running time is: " + str((t2-t1)*10) + "ms.")
+    print("Running time is: " + str((t2-t1)*1000) + "ms.")
 
 main()
 

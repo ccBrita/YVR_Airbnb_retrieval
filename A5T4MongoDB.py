@@ -10,7 +10,7 @@ def main():
     t2 = time.time()
     for host in hosts:
         print("listing_id:", host["id"])
-    print("Running time is: " + str((t2-t1)*10) + "ms.")    
+    print("Running time is: " + str((t2-t1)*1000) + "ms.")    
 
 main()
 

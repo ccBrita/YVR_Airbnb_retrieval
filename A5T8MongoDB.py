@@ -10,7 +10,7 @@ def query(table, sel_id):
         print("Price:", res["price"])
         latest = res["reviews"].pop()
         print("Latest Review:", latest["comments"])
-    print("Running time is: " + str((t2-t1)*10) + "ms.")
+    print("Running time is: " + str((t2-t1)*1000) + "ms.")
 
 def main():
     conn = pm.MongoClient("mongodb://localhost:27017")

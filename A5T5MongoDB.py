@@ -23,6 +23,6 @@ def main():
     t2 = time.time()
     result = list(cursor)
     print("Average price of this neighbourhood is",result[0]["avg"])
-    print("Running time is: " + str((t2-t1)*10) + "ms.")
+    print("Running time is: " + str((t2-t1)*1000) + "ms.")
 
 main()

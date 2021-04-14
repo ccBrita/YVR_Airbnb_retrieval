@@ -27,7 +27,7 @@ def query():
     rows = cursor.fetchall()
     for row in rows:
         print("listing id:",row[0])
-    print("Running time is: " + str((t2-t1)*10) + "ms.")
+    print("Running time is: " + str((t2-t1)*1000) + "ms.")
 
 
 def main():

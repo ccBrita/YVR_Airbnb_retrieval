@@ -28,7 +28,7 @@ def query(table, ql):
     while start > end:
         print("Listing_id:",sort[start][0])
         start -= 1
-    print("Running time is: " + str((t2-t1)*10) + "ms.")
+    print("Running time is: " + str((t2-t1)*1000) + "ms.")
 
 
 

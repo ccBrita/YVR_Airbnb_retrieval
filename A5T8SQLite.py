@@ -49,7 +49,7 @@ def query(select_id):
     rows = cursor.fetchall()
     for row in rows:
         print("Host name:",row[0],"\nPrice:",row[1],"\nLatest review:", row[2])
-    print("Running time is: " + str((t2-t1)*10) + "ms.")
+    print("Running time is: " + str((t2-t1)*1000) + "ms.")
 
 
 def main():
