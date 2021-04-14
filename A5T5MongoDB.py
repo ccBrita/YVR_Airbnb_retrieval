@@ -1,4 +1,5 @@
 import pymongo
+import time
 
 def main():
     myclient = pymongo.MongoClient("mongodb://localhost:27017")
@@ -13,13 +14,15 @@ def main():
     if not found:
         print("Please enter a valid neighbourhood!!")
         return
+    t1 = time.time()
     cursor = mycol.aggregate([
         {"$match":{"neighbourhood":n}},
         {"$group":{"_id":"$neighbourhood","avg":{"$avg":"$price"}}}
     ]
     )
+    t2 = time.time()
     result = list(cursor)
     print("Average price of this neighbourhood is",result[0]["avg"])
-
+    print("Running time is: " + str((t2-t1)*10) + "ms.")
 
 main()

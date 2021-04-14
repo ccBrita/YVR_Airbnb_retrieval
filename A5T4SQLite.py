@@ -1,6 +1,6 @@
 import sqlite3
 import csv
-
+import time
 connection = None
 cursor = None
 
@@ -16,15 +16,18 @@ def connect(path):
 def query():
     global connection
     global cursor
+    t1 = time.time()
     cursor.execute('''SELECT S.id
                     FROM listings S
                     LEFT JOIN reviews R ON S.id = R.listing_id
                     WHERE R.listing_id IS NULL
                     ORDER BY S.id
                     LIMIT 10''')
+    t2 = time.time()
     rows = cursor.fetchall()
     for row in rows:
         print("listing id:",row[0])
+    print("Running time is: " + str((t2-t1)*10) + "ms.")
 
 
 def main():

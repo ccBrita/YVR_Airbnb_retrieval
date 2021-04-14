@@ -1,5 +1,6 @@
 import sqlite3
 import csv
+import time
 
 connection = None
 cursor = None
@@ -16,16 +17,19 @@ def connect(path):
 def query():
     global connection
     global cursor
-
+    t1 = time.time()
     cursor.execute('''SELECT host_id, count(host_id)
                     FROM listings
                     GROUP BY host_id
                     ORDER BY host_id
                     LIMIT 10
                     ''')
+    t2 = time.time()
     rows = cursor.fetchall()
     for row in rows:
         print("listing id:",row[0],"count:",row[1])
+
+    print("Running time is: " + str((t2-t1)*10) + "ms.")    
 
 
 def main():

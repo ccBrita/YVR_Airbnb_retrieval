@@ -1,6 +1,7 @@
 import sqlite3
 import csv
 import random
+import time
 
 connection = None
 cursor = None
@@ -31,13 +32,16 @@ def find_nei():
 def query(neighbourhood):
     global connection
     global cursor
+    t1 = time.time()
     cursor.execute('''SELECT AVG(price)
                     FROM listings
                     WHERE neighbourhood = :n
                     GROUP BY neighbourhood''',{'n':neighbourhood})
+    t2 = time.time()
     rows = cursor.fetchall()
     for row in rows:
         print("Average price of this neighbourhood is", row[0])
+    print("Running time is: " + str((t2-t1)*10) + "ms.")
 
 
 def main():

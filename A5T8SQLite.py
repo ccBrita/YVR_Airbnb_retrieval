@@ -1,6 +1,7 @@
 import sqlite3
 import csv
 import random
+import time
 
 connection = None
 cursor = None
@@ -35,7 +36,7 @@ def find_listing_id():
 def query(select_id):
     global connection
     global cursor
-    
+    t1 = time.time()
     cursor.execute('''
                     SELECT host_name, price, comments
                     FROM reviews R,listings S
@@ -44,9 +45,11 @@ def query(select_id):
                     ORDER BY date DESC
                     LIMIT 1
                     ''',{'ID':select_id})
+    t2 = time.time()
     rows = cursor.fetchall()
     for row in rows:
         print("Host name:",row[0],"\nPrice:",row[1],"\nLatest review:", row[2])
+    print("Running time is: " + str((t2-t1)*10) + "ms.")
 
 
 def main():

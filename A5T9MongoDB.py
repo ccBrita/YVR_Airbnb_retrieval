@@ -1,6 +1,9 @@
 import pymongo as pm
 import string
+import time
+
 def query(table, ql):
+    t1 = time.time()
     res = table.aggregate([{"$unwind": "$reviews"},
                           {"$project": {"reviews.listing_id": 1, "reviews.comments": 1}}
                           ])
@@ -18,13 +21,14 @@ def query(table, ql):
             word.lower()
             if word in ql:
                 dic[result["reviews"]["listing_id"]] += 1
-    
+    t2 = time.time()
     sort = sorted(dic.items(), key = lambda kv:(kv[1], kv[0]))
     start = len(sort)-1
     end = start - 3
     while start > end:
         print("Listing_id:",sort[start][0])
         start -= 1
+    print("Running time is: " + str((t2-t1)*10) + "ms.")
 
 
 

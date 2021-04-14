@@ -1,12 +1,16 @@
 import pymongo as pm
+import time
 
 def query(table, sel_id):
+    t1 = time.time()
     results = table.find({"id":int(sel_id)})
+    t2 = time.time()
     for res in results:
         print("Host_name:", res["host_name"])
         print("Price:", res["price"])
         latest = res["reviews"].pop()
         print("Latest Review:", latest["comments"])
+    print("Running time is: " + str((t2-t1)*10) + "ms.")
 
 def main():
     conn = pm.MongoClient("mongodb://localhost:27017")
